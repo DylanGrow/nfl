@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https://a.espncdn.com data:; connect-src https://site.api.espn.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="NFL scores, this week's schedule, and simulated playoff odds for all 32 teams.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="modulepreload" href="data.js">
+<link rel="preconnect" href="https://a.espncdn.com">
+<script type="module" src="app.js"></script>
+<title>Gridiron Ledger: NFL schedules, scores and playoff odds</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen">
+<header class="hero-bg bg-turf text-white px-5 pt-7">
+  <h1 class="text-4xl">Gridiron Ledger</h1>
+  <p id="sub" role="status" class="mt-1 mb-4 opacity-85">Loading the season…</p>
+  <nav aria-label="Sections" class="flex flex-wrap gap-1">
+    <a class="px-4 py-3 border-b-4 border-transparent hover:border-flag [&.on]:border-flag" href="#week" data-r="week">This week</a>
+    <a class="px-4 py-3 border-b-4 border-transparent hover:border-flag [&.on]:border-flag" href="#playoffs" data-r="playoffs">Playoff odds</a>
+    <a class="px-4 py-3 border-b-4 border-transparent hover:border-flag [&.on]:border-flag" href="#teams" data-r="teams">All 32 teams</a>
+  </nav>
+</header>
+<main id="app" class="max-w-4xl mx-auto p-5 min-h-screen"></main>
+<footer class="max-w-4xl mx-auto p-5 text-sm text-mut">Data: ESPN public site API. Playoff odds are a simulation run in your browser, not an official figure.</footer>
+<script type="application/json" id="seed">__SEED__</script>
+</body>
+</html>

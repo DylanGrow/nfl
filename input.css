@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@source "../index.html";
+@source "../app.js";
+
+:root{--bg:#eef1ea;--ink:#10261f;--turf:#1f5a3a;--mut:#5a6b62;--flag:#f5c518;--bad:#b23a2e;--card:#fff;--line:#d5dccf}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1a15;--ink:#e9efe6;--turf:#2f8a58;--mut:#9fb2a7;--card:#14261e;--line:#26403a}}
+@theme inline{
+  --color-bg:var(--bg);--color-ink:var(--ink);--color-turf:var(--turf);--color-mut:var(--mut);
+  --color-flag:var(--flag);--color-bad:var(--bad);--color-card:var(--card);--color-line:var(--line);
+  --font-display:"Franklin Gothic Medium","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+}
+@layer base{
+  body{@apply bg-bg text-ink font-sans leading-normal}
+  h1,h2,h3{@apply font-display tracking-tight}
+  h2{@apply text-2xl mb-3}
+  h3{@apply text-xl mb-2}
+  table{@apply w-full border-collapse bg-card border border-line mb-6}
+  th,td{@apply p-2 text-left border-b border-line tabular-nums}
+  th{@apply text-sm text-mut font-semibold}
+  button{@apply px-3.5 py-2 border border-line bg-card rounded-md cursor-pointer disabled:opacity-40 disabled:cursor-default}
+  a:focus-visible,button:focus-visible{@apply outline-3 outline-flag outline-offset-2}
+}
+@layer components{
+  .row{@apply flex justify-between items-center gap-3 flex-wrap mb-3}
+  .game{@apply grid grid-cols-[1fr_auto] gap-2 bg-card border border-line rounded-md px-3.5 py-2.5 mb-2}
+  .t{@apply flex items-center gap-2 hover:underline}
+  .win{@apply font-bold}
+  .mut{@apply text-mut text-sm}
+  .sc{@apply text-right tabular-nums min-w-24}
+  .yd{@apply relative h-3.5 border border-line rounded-sm min-w-24 bg-bg;
+    background-image:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 10%)}
+  .yd i{@apply absolute inset-y-0 left-0 bg-turf transition-[width] duration-700 motion-reduce:transition-none}
+  .big{@apply font-display font-bold text-5xl leading-none}
+  .tgrid{@apply grid grid-cols-[repeat(auto-fill,minmax(210px,1fr))] gap-2 mb-6}
+  .tgrid a{@apply flex gap-2.5 items-center bg-card border border-line border-l-[6px] rounded-md p-2.5;border-left-color:var(--tc,var(--turf))}
+  .tgrid img{@apply size-9 object-contain}
+  .cards{@apply grid grid-cols-[repeat(auto-fit,minmax(130px,1fr))] gap-2 mt-3.5 mb-5}
+  .cards div{@apply bg-card border border-line rounded-md p-2.5}
+  .cards b{@apply block text-xl}
+  .err{@apply border-2 border-bad p-3.5 rounded-md bg-card}
+}
+.hero-bg{background-image:repeating-linear-gradient(90deg,transparent 0 79px,rgb(255 255 255/.18) 79px 80px)}
